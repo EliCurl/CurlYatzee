@@ -1,2 +1,2 @@
-# CurlYatzee
-Curl Yatzee Program
+# Curl_Yahtzee
+ Yahtzee game

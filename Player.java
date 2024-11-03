@@ -32,10 +32,12 @@ public class Player {
     private int p12;
     private boolean c13;
     private int p13;
-    private int[] startingRoll = new int[5];
+    private int[] startingRoll;
     private int beginRoll;
     private boolean cRealYatzee;
     private ArrayList<Dice> pDice = new ArrayList<Dice>();
+
+    private int amountOfDice;
 
 
 
@@ -65,6 +67,10 @@ public class Player {
             pDice.add(d);
         }
 
+        // assumes dice are 5
+        amountOfDice = 5;
+        startingRoll = new int[5];
+
         //attributes
     }
 
@@ -88,6 +94,36 @@ public class Player {
             Dice d = new Dice();
             pDice.add(d);
         }
+
+        // assumes dice are 5
+        amountOfDice = 5;
+        startingRoll = new int[5];
+    }
+
+    // Player(Name, amountOfDice)
+    public Player(String n, int dice){
+        name = n;
+        c1 = false;
+        c2 = false;
+        c3 = false;
+        c4 = false;
+        c5 = false;
+        c6 = false;
+        c7 = false;
+        c8 = false;
+        c9 = false;
+        c10 = false;
+        c11 = false;
+        c12 = false;
+        c13 = false;
+        cRealYatzee = false;
+        for(int i = 0; i < amountOfDice; ++i){
+            Dice d = new Dice();
+            pDice.add(d);
+        }
+
+        amountOfDice = dice;
+        startingRoll = new int[dice];
     }
 
     public Player(Player p){
@@ -114,6 +150,10 @@ public class Player {
             Dice d = new Dice();
             pDice.add(d);
         }
+
+        // assumes dice are 5
+        amountOfDice = 5;
+        startingRoll = new int[5];
     }
 
 
@@ -560,7 +600,7 @@ public class Player {
 
     // prints the dice
     public void printDice(){
-        for(int i = 0; i < 5; ++i){
+        for(int i = 0; i < amountOfDice; ++i){
             System.out.print(pDice.get(i).print() + " ");
         }
         System.out.println();
@@ -568,7 +608,7 @@ public class Player {
 
     // prints the dice but for the keep function
     public void printDiceKeep(){
-        for(int i = 0; i < 5; ++i){
+        for(int i = 0; i < amountOfDice; ++i){
             if(pDice.get(i).showKeep()){
                 System.out.print("(" + (i+1) + ") " + pDice.get(i).print() + "->[*], ");
             }

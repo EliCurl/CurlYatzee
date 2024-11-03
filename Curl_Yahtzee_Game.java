@@ -43,6 +43,28 @@ public class Curl_Yahtzee_Game{
         System.out.println("There are " + players + " Player(s)!");
         scan.nextLine();
 
+
+        // CHECK FOR HOW MANY DICE
+        int amountOfDice;
+        boolean check2 = false;
+        while(!check2){
+            try{
+            System.out.println("How many dice do you want to play with? (5 or 6)");
+            amountOfDice = scan.nextInt();
+            if (amountOfDice == 5 || amountOfDice == 6){
+            check2 = true;
+        }
+        else{
+            System.out.println("Please pick a number within the range");
+        }
+            }catch(Exception e){
+                System.out.println("Please pick a integer");
+                scan.nextLine();
+            }
+    }
+
+
+
         ArrayList<Player> playerArray = new ArrayList<Player>();
 
         // Test constructor and beginningRoll()
@@ -59,6 +81,7 @@ public class Curl_Yahtzee_Game{
         for(int i = 0; i < players; ++i){
             System.out.println("What is the name for player " + (i+1) + "?");
             String x = scan.nextLine();
+            // change this for another input?
             Player p = new Player(x);
             playerArray.add(p);
             playerArray.get(i).beginningRoll();

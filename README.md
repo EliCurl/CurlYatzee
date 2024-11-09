@@ -12,6 +12,6 @@ Then the game will roll the dice for the first person asking if they want to kee
 roll the dice again
 and/or insert the dice into a category
 
-It does this for 13 rounds of the game adding the scores at the end to see who won
+It does this for 13/15 rounds of the game adding the scores at the end to see who won
 
 Hope you enjoy!

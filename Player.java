@@ -32,6 +32,14 @@ public class Player {
     private int p12;
     private boolean c13;
     private int p13;
+
+    private boolean c14;
+    private int p14;
+    private boolean c15;
+    private int p15;
+    private boolean c16;
+    private int p16;
+
     private int[] startingRoll;
     private int beginRoll;
     private boolean cRealYatzee;
@@ -103,6 +111,7 @@ public class Player {
     // Player(Name, amountOfDice)
     public Player(String n, int dice){
         name = n;
+        amountOfDice = dice;
         c1 = false;
         c2 = false;
         c3 = false;
@@ -116,13 +125,14 @@ public class Player {
         c11 = false;
         c12 = false;
         c13 = false;
+        c14 = false;
+        c15 = false;
+        c16 = false;
         cRealYatzee = false;
         for(int i = 0; i < amountOfDice; ++i){
             Dice d = new Dice();
             pDice.add(d);
         }
-
-        amountOfDice = dice;
         startingRoll = new int[dice];
     }
 
@@ -175,6 +185,7 @@ public class Player {
 
     //insert into a category
     public boolean insert(int ins){
+        if(amountOfDice == 5){
         supercheck = false;
         if(ins == 1 && !c1){
             for(int i = 0; i < pDice.size(); ++i){
@@ -531,6 +542,522 @@ public class Player {
         return supercheck;
     }
 
+    //If there is six dice check
+
+    else{
+        supercheck = false;
+        if(ins == 1 && !c1){
+            for(int i = 0; i < pDice.size(); ++i){
+                if(pDice.get(i).diceNumber() == 1){
+                    p1++;
+                }
+            }
+            if(cRealYatzee){
+                p1 = multiYatzee();
+            }
+            System.out.println("You got " + p1 + " Points!");
+            c1 = true;
+            supercheck = true;
+        }
+        if(ins == 2 && !c2){
+            for(int i = 0; i < pDice.size(); ++i){
+                if(pDice.get(i).diceNumber() == 2){
+                    p2 = p2 + 2;
+                }
+            }
+            if(cRealYatzee){
+                p2 = multiYatzee();
+            }
+            System.out.println("You got " + p2 + " Points!");
+            c2 = true;
+            supercheck = true;
+        }
+        if(ins == 3 && !c3){
+            for(int i = 0; i < pDice.size(); ++i){
+                if(pDice.get(i).diceNumber() == 3){
+                    p3 = p3 + 3;
+                }
+            }
+            if(cRealYatzee){
+                p3 = multiYatzee();
+            }
+            System.out.println("You got " + p3 + " Points!");
+            c3 = true;
+            supercheck = true;
+        }
+        if(ins == 4 && !c4){
+            for(int i = 0; i < pDice.size(); ++i){
+                if(pDice.get(i).diceNumber() == 4){
+                    p4 = p4 + 4;
+                }
+            }
+            if(cRealYatzee){
+                p4 = multiYatzee();
+            }
+            System.out.println("You got " + p4 + " Points!");
+            c4 = true;
+            supercheck = true;
+        }
+        if(ins == 5 && !c5){
+            for(int i = 0; i < pDice.size(); ++i){
+                if(pDice.get(i).diceNumber() == 5){
+                    p5 = p5 + 5;
+                }
+            }
+            if(cRealYatzee){
+                p5 = multiYatzee();
+            }
+            System.out.println("You got " + p5 + " Points!");
+            c5 = true;
+            supercheck = true;
+        }
+        if(ins == 6 && !c6){
+            for(int i = 0; i < pDice.size(); ++i){
+                if(pDice.get(i).diceNumber() == 6){
+                    p6 = p6 + 6;
+                }
+            }
+            if(cRealYatzee){
+                p6 = multiYatzee();
+            }
+            System.out.println("You got " + p6 + " Points!");
+            c6 = true;
+            supercheck = true;
+        }
+        if(ins == 7 && !c7){
+            int a1 = 0;
+            int a2 = 0;
+            int a3 = 0;
+            int a4 = 0;
+            int a5 = 0;
+            int a6 = 0;
+            for(int i = 0; i < pDice.size(); ++i){
+                if(pDice.get(i).diceNumber() == 1){
+                    a1++;
+                }
+                if(pDice.get(i).diceNumber() == 2){
+                    a2++;
+                }
+                if(pDice.get(i).diceNumber() == 3){
+                    a3++;
+                }
+                if(pDice.get(i).diceNumber() == 4){
+                    a4++;
+                }
+                if(pDice.get(i).diceNumber() == 5){
+                    a5++;
+                }
+                if(pDice.get(i).diceNumber() == 6){
+                    a6++;
+                }
+            }
+            if(a1 >= 3 || a2 >= 3 || a3 >= 3 || a4 >= 3 || a5 >= 3 || a6 >= 3){
+                for(int i = 0; i < pDice.size(); ++i){
+                    p7 = p7 + pDice.get(i).diceNumber();
+                }
+            }
+            if(cRealYatzee){
+                p7 = multiYatzee();
+            }
+            System.out.println("You got " + p7 + " Points!");
+            c7 = true;
+            supercheck = true;
+        }
+        if(ins == 8 && !c8){
+            int a1 = 0;
+            int a2 = 0;
+            int a3 = 0;
+            int a4 = 0;
+            int a5 = 0;
+            int a6 = 0;
+            for(int i = 0; i < pDice.size(); ++i){
+                if(pDice.get(i).diceNumber() == 1){
+                    a1++;
+                }
+                if(pDice.get(i).diceNumber() == 2){
+                    a2++;
+                }
+                if(pDice.get(i).diceNumber() == 3){
+                    a3++;
+                }
+                if(pDice.get(i).diceNumber() == 4){
+                    a4++;
+                }
+                if(pDice.get(i).diceNumber() == 5){
+                    a5++;
+                }
+                if(pDice.get(i).diceNumber() == 6){
+                    a6++;
+                }
+            }
+            if(a1 >= 4 || a2 >= 4 || a3 >= 4 || a4 >= 4 || a5 >= 4 || a6 >= 4){
+                for(int i = 0; i < pDice.size(); ++i){
+                    p8 = p8 + pDice.get(i).diceNumber();
+                }
+            }
+            if(cRealYatzee){
+                p8 = multiYatzee();
+            }
+            System.out.println("You got " + p8 + " Points!");
+            c8 = true;
+            supercheck = true;
+        }
+        if(ins == 9 && !c9){
+            // full house
+            int a1 = 0;
+            int a2 = 0;
+            int a3 = 0;
+            int a4 = 0;
+            int a5 = 0;
+            int a6 = 0;
+            for(int i = 0; i < pDice.size(); ++i){
+                if(pDice.get(i).diceNumber() == 1){
+                    a1++;
+                }
+                if(pDice.get(i).diceNumber() == 2){
+                    a2++;
+                }
+                if(pDice.get(i).diceNumber() == 3){
+                    a3++;
+                }
+                if(pDice.get(i).diceNumber() == 4){
+                    a4++;
+                }
+                if(pDice.get(i).diceNumber() == 5){
+                    a5++;
+                }
+                if(pDice.get(i).diceNumber() == 6){
+                    a6++;
+                }
+            }
+            if(a1 == 3 || a2 == 3 || a3 == 3 || a4 == 3 || a5 == 3 || a6 == 3){
+                if(a1 == 2 || a2 == 2 || a3 == 2 || a4 == 2 || a5 == 2 || a6 == 2){
+                    p9 = 25;
+                }
+            }
+            if(cRealYatzee){
+                p9 = multiYatzee();
+            }
+            System.out.println("You got " + p9 + " Points!");
+            c9 = true;
+            supercheck = true;
+        }
+        if(ins == 10 && !c10){
+            // small straight
+            int a1 = 0;
+            int a2 = 0;
+            int a3 = 0;
+            int a4 = 0;
+            int a5 = 0;
+            int a6 = 0;
+            for(int i = 0; i < pDice.size(); ++i){
+                if(pDice.get(i).diceNumber() == 1){
+                    a1++;
+                }
+                if(pDice.get(i).diceNumber() == 2){
+                    a2++;
+                }
+                if(pDice.get(i).diceNumber() == 3){
+                    a3++;
+                }
+                if(pDice.get(i).diceNumber() == 4){
+                    a4++;
+                }
+                if(pDice.get(i).diceNumber() == 5){
+                    a5++;
+                }
+                if(pDice.get(i).diceNumber() == 6){
+                    a6++;
+                }
+            }
+            if(a1 >= 1 && a2 >= 1 && a3 >= 1 && a4 >= 1){
+                p10 = 30;
+            }
+            else if(a2 >= 1 && a3 >= 1 && a4 >= 1 && a5 >= 1){
+                p10 = 30;
+            }
+            else if(a3 >= 1 && a4 >= 1 && a5 >= 1 && a6 >= 1){
+                p10 = 30;
+            }
+            if(cRealYatzee){
+                p10 = multiYatzee();
+            }
+            System.out.println("You got " + p10 + " Points!");
+            c10 = true;
+            supercheck = true;
+        }
+        if(ins == 11 && !c11){
+            // large straight
+            int a1 = 0;
+            int a2 = 0;
+            int a3 = 0;
+            int a4 = 0;
+            int a5 = 0;
+            int a6 = 0;
+            for(int i = 0; i < pDice.size(); ++i){
+                if(pDice.get(i).diceNumber() == 1){
+                    a1++;
+                }
+                if(pDice.get(i).diceNumber() == 2){
+                    a2++;
+                }
+                if(pDice.get(i).diceNumber() == 3){
+                    a3++;
+                }
+                if(pDice.get(i).diceNumber() == 4){
+                    a4++;
+                }
+                if(pDice.get(i).diceNumber() == 5){
+                    a5++;
+                }
+                if(pDice.get(i).diceNumber() == 6){
+                    a6++;
+                }
+            }
+            if(a1 >= 1 && a2 >= 1 && a3 >= 1 && a4 >= 1){
+                p11 = 40;
+            }
+            else if(a2 >= 1 && a3 >= 1 && a4 >= 1 && a5 >= 1){
+                p11 = 40;
+            }
+            else if(a3 >= 1 && a4 >= 1 && a5 >= 1 && a6 >= 1){
+                p11 = 40;
+            }
+            if(cRealYatzee){
+                p11 = multiYatzee();
+            }
+            System.out.println("You got " + p11 + " Points!");
+            c11 = true;
+            supercheck = true;
+        }
+        if(ins == 12 && !c12){
+            // yatzee
+            int a1 = 0;
+            int a2 = 0;
+            int a3 = 0;
+            int a4 = 0;
+            int a5 = 0;
+            int a6 = 0;
+            for(int i = 0; i < pDice.size(); ++i){
+                if(pDice.get(i).diceNumber() == 1){
+                    a1++;
+                }
+                if(pDice.get(i).diceNumber() == 2){
+                    a2++;
+                }
+                if(pDice.get(i).diceNumber() == 3){
+                    a3++;
+                }
+                if(pDice.get(i).diceNumber() == 4){
+                    a4++;
+                }
+                if(pDice.get(i).diceNumber() == 5){
+                    a5++;
+                }
+                if(pDice.get(i).diceNumber() == 6){
+                    a6++;
+                }
+            }
+            if(a1 == 5){
+                p12 = 50;
+                cRealYatzee = true;
+            }
+            if(a2 == 5){
+                p12 = 50;
+                cRealYatzee = true;
+            }
+            if(a3 == 5){
+                p12 = 50;
+                cRealYatzee = true;
+            }
+            if(a4 == 5){
+                p12 = 50;
+                cRealYatzee = true;
+            }
+            if(a5 == 5){
+                p12 = 50;
+                cRealYatzee = true;
+            }
+            if(a6 == 5){
+                p12 = 50;
+                cRealYatzee = true;
+            }
+            System.out.println("You got " + p12 + " Points!");
+            c12 = true;
+            supercheck = true;
+        }
+        if(ins == 13 && !c13){
+            // chance
+            for(int i = 0; i < pDice.size(); ++i){
+                p13 = p13 + pDice.get(i).diceNumber();
+            }
+            if(cRealYatzee){
+                p13 = multiYatzee();
+            }
+            System.out.println("You got " + p13 + " Points!");
+            c13 = true;
+            supercheck = true;
+        }
+        if(ins == 14 && !c14){
+            // 6 of a kind
+            int a1 = 0;
+            int a2 = 0;
+            int a3 = 0;
+            int a4 = 0;
+            int a5 = 0;
+            int a6 = 0;
+            for(int i = 0; i < pDice.size(); ++i){
+                if(pDice.get(i).diceNumber() == 1){
+                    a1++;
+                }
+                if(pDice.get(i).diceNumber() == 2){
+                    a2++;
+                }
+                if(pDice.get(i).diceNumber() == 3){
+                    a3++;
+                }
+                if(pDice.get(i).diceNumber() == 4){
+                    a4++;
+                }
+                if(pDice.get(i).diceNumber() == 5){
+                    a5++;
+                }
+                if(pDice.get(i).diceNumber() == 6){
+                    a6++;
+                }
+            }
+            if(a1 == 6){
+                p14 = 100;
+            }
+            if(a2 == 6){
+                p14 = 100;
+            }
+            if(a3 == 6){
+                p14 = 100;
+            }
+            if(a4 == 6){
+                p14 = 100;
+            }
+            if(a5 == 6){
+                p14 = 100;
+            }
+            if(a6 == 6){
+                p14 = 100;
+            }
+            if(cRealYatzee){
+                p14 = multiYatzee();
+            }
+            System.out.println("You got " + p14 + " Points!");
+            c14 = true;
+            supercheck = true;
+            }
+        if(ins == 15 && !c15){
+            //Split (222333)
+            int a1 = 0;
+            int a2 = 0;
+            int a3 = 0;
+            int a4 = 0;
+            int a5 = 0;
+            int a6 = 0;
+            for(int i = 0; i < pDice.size(); ++i){
+                if(pDice.get(i).diceNumber() == 1){
+                    a1++;
+                }
+                if(pDice.get(i).diceNumber() == 2){
+                    a2++;
+                }
+                if(pDice.get(i).diceNumber() == 3){
+                    a3++;
+                }
+                if(pDice.get(i).diceNumber() == 4){
+                    a4++;
+                }
+                if(pDice.get(i).diceNumber() == 5){
+                    a5++;
+                }
+                if(pDice.get(i).diceNumber() == 6){
+                    a6++;
+                }
+            }
+            if(a1 == 3){
+                if(a2 == 3 || a3 == 3 || a4 == 3 || a5 == 3 || a6 == 3){
+                    p15 = 50;
+                }
+            }
+            if(a2 == 3){
+                if(a1 == 3 || a3 == 3 || a4 == 3 || a5 == 3 || a6 == 3){
+                    p15 = 50;
+                }
+            }
+            if(a3 == 3){
+                if(a2 == 3 || a1 == 3 || a4 == 3 || a5 == 3 || a6 == 3){
+                    p15 = 50;
+                }
+            }
+            if(a4 == 3){
+                if(a2 == 3 || a3 == 3 || a1 == 3 || a5 == 3 || a6 == 3){
+                    p15 = 50;
+                }
+            }
+            if(a5 == 3){
+                if(a2 == 3 || a3 == 3 || a4 == 3 || a1 == 3 || a6 == 3){
+                    p15 = 50;
+                }
+            }
+            if(a6 == 3){
+                if(a2 == 3 || a3 == 3 || a4 == 3 || a5 == 3 || a1 == 3){
+                    p15 = 50;
+                }
+            }
+            if(cRealYatzee){
+                p15 = multiYatzee();
+            }
+            System.out.println("You got " + p15 + " Points!");
+            c15 = true;
+            supercheck = true;
+        }
+        if(ins == 16 && !c16){
+            //Giant Straight (1 2 3 4 5 6)
+            int a1 = 0;
+            int a2 = 0;
+            int a3 = 0;
+            int a4 = 0;
+            int a5 = 0;
+            int a6 = 0;
+            for(int i = 0; i < pDice.size(); ++i){
+                if(pDice.get(i).diceNumber() == 1){
+                    a1++;
+                }
+                if(pDice.get(i).diceNumber() == 2){
+                    a2++;
+                }
+                if(pDice.get(i).diceNumber() == 3){
+                    a3++;
+                }
+                if(pDice.get(i).diceNumber() == 4){
+                    a4++;
+                }
+                if(pDice.get(i).diceNumber() == 5){
+                    a5++;
+                }
+                if(pDice.get(i).diceNumber() == 6){
+                    a6++;
+                }
+            }
+            if(a1 == 1 && a2 == 1 && a3 == 1 && a4 == 1 && a5 == 1 && a6 == 1){
+                p16 = 80;
+            }
+            if(cRealYatzee){
+                p16 = multiYatzee();
+            }
+            System.out.println("You got " + p16 + " Points!");
+            c16 = true;
+            supercheck = true;
+        }
+        }
+        return supercheck;
+    }
+
     public int multiYatzee(){
             int points = 0;
             int b1 = 0;
@@ -582,6 +1109,7 @@ public class Player {
 
     public int allPoints(){
         int allP = 0;
+        if(amountOfDice == 5){
         allP = allP + p1;
         allP = allP + p2;
         allP = allP + p3;
@@ -595,6 +1123,25 @@ public class Player {
         allP = allP + p11;
         allP = allP + p12;
         allP = allP + p13;
+        }
+        else{
+            allP = allP + p1;
+        allP = allP + p2;
+        allP = allP + p3;
+        allP = allP + p4;
+        allP = allP + p5;
+        allP = allP + p6;
+        allP = allP + p7;
+        allP = allP + p8;
+        allP = allP + p9;
+        allP = allP + p10;
+        allP = allP + p11;
+        allP = allP + p12;
+        allP = allP + p13;
+        allP = allP + p14;
+        allP = allP + p15;
+        allP = allP + p16;
+        }
         return allP;
     }
 
@@ -783,6 +1330,18 @@ public class Player {
 
         public boolean getc13(){
             return c13; 
+        }
+
+        public boolean getc14(){
+            return c14; 
+        }
+
+        public boolean getc15(){
+            return c15; 
+        }
+
+        public boolean getc16(){
+            return c16; 
         }
 
 }

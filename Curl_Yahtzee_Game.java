@@ -21,6 +21,8 @@ public class Curl_Yahtzee_Game{
         boolean check = false;
         Scanner scan = new Scanner(System.in);
         int players = 0;
+        int amountOfDice = 0;
+        int numberOfRounds = 0;
         
 
         // have a looping mechanism that confirms they have choosen a correct ammount
@@ -45,7 +47,6 @@ public class Curl_Yahtzee_Game{
 
 
         // CHECK FOR HOW MANY DICE
-        int amountOfDice;
         boolean check2 = false;
         while(!check2){
             try{
@@ -62,6 +63,7 @@ public class Curl_Yahtzee_Game{
                 scan.nextLine();
             }
     }
+        scan.nextLine();
 
 
 
@@ -82,7 +84,7 @@ public class Curl_Yahtzee_Game{
             System.out.println("What is the name for player " + (i+1) + "?");
             String x = scan.nextLine();
             // change this for another input?
-            Player p = new Player(x);
+            Player p = new Player(x, amountOfDice);
             playerArray.add(p);
             playerArray.get(i).beginningRoll();
         }
@@ -109,7 +111,14 @@ public class Curl_Yahtzee_Game{
 
         //Start the game
 
-        for(int i = 0; i < 13; ++i){
+        if(amountOfDice == 5){
+            numberOfRounds = 13;
+        }
+        else if(amountOfDice == 6){
+            numberOfRounds = 16;
+        }
+
+        for(int i = 0; i < numberOfRounds; ++i){
             for(int j = 0; j < players; ++j){
                 boolean endTurn = false;
                 boolean endFirstRoll = false;
@@ -134,7 +143,7 @@ public class Curl_Yahtzee_Game{
                     else if(in.equals("k")){
                         //choose dice to keep/unkeep
                         playerArray.get(j).printDiceKeep();
-                        System.out.println("Which dice would you like to keep? (1-5)");
+                        System.out.println("Which dice would you like to keep? (1-" + amountOfDice + ")");
                         try{
                         int y = scan.nextInt();
                         y = y - 1;
@@ -145,7 +154,7 @@ public class Curl_Yahtzee_Game{
                                 playerArray.get(j).getDiceSpot(y).keepDice();
                             }
                         }catch(Exception e){
-                            System.out.println("Please pick a integer from (1-5)");
+                            System.out.println("Please pick a integer from 1-" + amountOfDice);
                             scan.nextLine();
                         }
                         System.out.println("Would you like to keep,roll again, or insert into a category? \n(r for roll, k for keep, and i for inserting into category)");
@@ -244,6 +253,29 @@ public class Curl_Yahtzee_Game{
                         }
                         else{
                             System.out.println("[]");
+                        }
+                        if(amountOfDice == 6){
+                            System.out.print("[14] 6 of a kind: ");
+                            if(playerArray.get(j).getc14()){
+                                System.out.println("[*]");
+                            }
+                            else{
+                                System.out.println("[]");
+                            }
+                            System.out.print("[15] Split: ");
+                            if(playerArray.get(j).getc15()){
+                                System.out.println("[*]");
+                            }
+                            else{
+                                System.out.println("[]");
+                            }
+                            System.out.print("[16] Giant Straight: ");
+                            if(playerArray.get(j).getc16()){
+                                System.out.println("[*]");
+                            }
+                            else{
+                                System.out.println("[]");
+                            }
                         }
 
                         boolean czech = false;
@@ -402,6 +434,29 @@ public class Curl_Yahtzee_Game{
                             else{
                                 System.out.println("[]");
                             }
+                            if(amountOfDice == 6){
+                                System.out.print("[14] 6 of a kind: ");
+                                if(playerArray.get(j).getc14()){
+                                    System.out.println("[*]");
+                                }
+                                else{
+                                    System.out.println("[]");
+                                }
+                                System.out.print("[15] Split: ");
+                                if(playerArray.get(j).getc15()){
+                                    System.out.println("[*]");
+                                }
+                                else{
+                                    System.out.println("[]");
+                                }
+                                System.out.print("[16] Giant Straight: ");
+                                if(playerArray.get(j).getc16()){
+                                    System.out.println("[*]");
+                                }
+                                else{
+                                    System.out.println("[]");
+                                }
+                            }
 
                             boolean czech = false;
                             int exp;
@@ -526,6 +581,29 @@ public class Curl_Yahtzee_Game{
                     }
                     else{
                         System.out.println("[]");
+                    }
+                    if(amountOfDice == 6){
+                        System.out.print("[14] 6 of a kind: ");
+                        if(playerArray.get(j).getc14()){
+                            System.out.println("[*]");
+                        }
+                        else{
+                            System.out.println("[]");
+                        }
+                        System.out.print("[15] Split: ");
+                        if(playerArray.get(j).getc15()){
+                            System.out.println("[*]");
+                        }
+                        else{
+                            System.out.println("[]");
+                        }
+                        System.out.print("[16] Giant Straight: ");
+                        if(playerArray.get(j).getc16()){
+                            System.out.println("[*]");
+                        }
+                        else{
+                            System.out.println("[]");
+                        }
                     }
 
                     boolean czech = false;
